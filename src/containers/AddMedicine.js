@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import AddContactForm from '../components/AddContactForm';
-import { addContact, handleInputChange, toggleContactForm } from '../actions';
+import AddMedicineForm from '../components/MedicineForm';
+import { addMedicine, handleInputChange, toggleMedicineForm } from '../actions';
 
 
-class AddContact extends Component {
+class AddMedicine extends Component {
 
 
-	showAddContactBox=()=> {
+	showAddMedicineBox=()=> {
+
 		const { onToggle }  = this.props;
 		onToggle();
 
@@ -32,15 +33,21 @@ class AddContact extends Component {
 	renderForm() {
 		return(
 			<div className="col-sm-8 offset-sm-2">
-				<AddContactForm onFormSubmit={this.handleSubmit} onInputChange={this.handleInputChange} />
+				<AddMedicineForm onFormSubmit={this.handleSubmit} 
+				    onInputChange={this.handleInputChange} />
  			</div>
  		)
 	}
+
+	
 	render() {
 		return(
 			<div>
 				
-				{ this.props.isHidden === false ? this.renderForm(): <button  className="btn btn-secondary" style= {{ "marginLeft": "15px"}} type="submit" onClick={this.showAddContactBox} > Add Contact </button>}
+				{ this.props.isHidden === false ? 
+					this.renderForm(): <button  className="btn btn-secondary" 
+					style= {{ "marginLeft": "15px"}} 
+					type="submit" onClick={this.showAddMedicineBox} > Add Medicine </button>}
 			</div>
 			)
 	}
@@ -50,15 +57,15 @@ class AddContact extends Component {
 
 function mapStateToProps(state) {
     return {
-        isHidden : state.ui.isAddContactFormHidden,
-        newContact: state.contacts.newContact
+        isHidden : state.ui.isAddMedicineFormHidden,
+        newMedicine: state.medicines.newMedicine
     }
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        onFormSubmit: (newContact) => {
-           dispatch(addContact(newContact));
+        onFormSubmit: (newMedicine) => {
+           dispatch(addMedicine(newMedicine));
         },
         onInputChange: (name,value) => {
     
@@ -66,10 +73,12 @@ function mapDispatchToProps(dispatch) {
         },
 
         onToggle: () => {
-        	dispatch(toggleContactForm());
+
+
+        	dispatch(toggleMedicineForm());
         }
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps) (AddContact)
+export default connect(mapStateToProps, mapDispatchToProps) (AddMedicine)
 

@@ -1,8 +1,9 @@
 import axios from 'axios';
 
-export const addContact =() => {
+export const addMedicine =() => {
+
 	return {
-		type: "ADD_CONTACT",
+		type: "ADD_MEDICINE",
 		
 	}
 }
@@ -15,55 +16,56 @@ export const handleInputChange = (name, value) => {
 	}
 }
 
-export const toggleContactForm = () => {
+export const toggleMedicineForm = () => {
+
 	return {
-		type: "TOGGLE_CONTACT_FORM",
+		type: "TOGGLE_MEDICINE_FORM",
 	}
 }
 
 
-export const requestContacts = () => {
-	console.log("inside requestContacts");
+export const requestMedicines = () => {
+	console.log("inside requestMedicines");
 	return {
-		type: "REQUEST_CONTACTS",
+		type: "REQUEST_MEDICINE",
 		payload: true
 	}
 }
 
-export const receiveContacts = (json) => {
+export const receiveMedicines = (json) => {
 	return {
-		type: "RECEIVE_CONTACTS",
-		payload: json.contacts
+		type: "RECEIVE_MEDICINES",
+		payload: json.medicines
 	}
 }
 
-export const receiveContactsError = (err) => {
+export const receiveMedicinesError = (err) => {
 	return {
 		type: "ERROR",
 		payload: err
 	}
 }
 
-export const fetchContacts = () => {
+export const fetchMedicines = () => {
 	return (dispatch) => {
 
-		dispatch(requestContacts());
+		dispatch(requestMedicines());
 		return axios
-			.get('https://demo1443058.mockable.io/codeproject_tutorial/api/contacts')
+			.get('http://localhost:4040/medicines')
 			.then(response => {
-				dispatch(receiveContacts(response.data))
+				dispatch(receiveMedicines(response.data))
 			})
 			.catch ( err => {
-				dispatch(receiveContactsError(err))
+				dispatch(receiveMedicinesError(err))
 			})
 	}
 }
 
-export const searchContacts = (searchText) => {
+export const searchMedicines = (searchText) => {
 	return (dispatch) => {
 		dispatch(handleSearchInput(searchText));
 		return {
-			type: "SEARCH_CONTACTS"
+			type: "SEARCH_MEDICINES"
 		}
 	}
 }

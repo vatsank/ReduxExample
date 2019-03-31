@@ -1,0 +1,7 @@
+{
+    "medicines": [{
+        "id": 1,
+        "name": "crocin",
+        "quantity": 4
+    }]
+}

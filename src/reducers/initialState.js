@@ -1,18 +1,16 @@
 const initialState = {
-	contacts: {
-		contactList: [],
-		newContact: {
+	medicines: {
+		medicineList: [],
+		newMedicine: {
 				name: '',
-				surname: '',
-				email: '',
-				address: '',
-				phone: ''
+				quantity: ''
+				
 		},
 		searchText: 'a'		
 	},
 
 	ui: {
-			isAddContactFormHidden: true
+			isAddMedicineFormHidden: true
 		}
 }
 

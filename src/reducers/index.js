@@ -1,11 +1,11 @@
 
 import { combineReducers } from 'redux'
-import contactsReducer from './contactsReducer';
+import medicineReducer from './medicineReducer';
 import uiReducer from './uiReducer';
 
 const rootReducer =combineReducers({
     
-    contacts: contactsReducer,
+    medicines: medicineReducer,
     ui: uiReducer,
   
 })
